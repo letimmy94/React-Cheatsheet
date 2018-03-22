@@ -39,7 +39,7 @@ If you are using Babel to compile your code
 import axios from 'axios'
 ```
 
-// In standard vanilla Javascript
+In standard vanilla Javascript
 
 ```
 let axios = require('axios')
@@ -55,4 +55,21 @@ axios.get('url')
   .catch((error) => {
     console.log(error)
   })
+```
+
+## Binding
+
+In React, when we use event methods, we usually have to bind the this keyword to the method so that it works properly. Class methods are not bound by default, so this is undefined unless we specify otherwise. We could bind this to the event each time we call it; however, it is usually more efficient to do so by default in the constructor...
+
+```
+constructor (props) {
+  super(props)
+  this.handleClick = this.handleClick.bind(this)
+}
+```
+
+Then when we add the event handler, we can just do so just like this:
+
+```
+<button onClick={this.handleClick}/>
 ```
